@@ -84,9 +84,9 @@ class TimeSelect extends React.Component {
     if (!this.state.futureOnly) return times;
 
     return {
-      hour: this.state.pm === this.state.nowPm
+      hour: times.pm === this.state.nowPm
             && this.state.nowHour > times.hour
-            ? this.state.hour 
+            ? this.state.nowHour 
             : times.hour,
 
       minute: times.pm === this.state.nowPm 
