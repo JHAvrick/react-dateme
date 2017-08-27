@@ -23,16 +23,11 @@ class TimeSelect extends React.Component {
       border: props.color
     }
 
-
     this.timeUpdate = setInterval(()=>{
         if (this.state.futureOnly){
           let now = new Date();
           this.setState({
-            nowHour: (() => {
-              let currentHour = now.getHours();
-              if (currentHour > 11) return currentHour - 11;
-              else return currentHour + 1;
-            })(),
+            nowHour: now.getHours(),
             nowMinute: now.getMinutes(),
             nowPm: now.getHours() > 11 ? true : false
           });
@@ -80,30 +75,34 @@ class TimeSelect extends React.Component {
     });
   }
 
+  //Enforces time constraints if futureOnly is set to true
+  //Returns params immediately otherwise
   getConstrainedTime(times){
     if (!this.state.futureOnly) return times;
 
+    //Convert given time to 24 hour clock because its easier to work with
+    let hours24 = this.state.nowPm ? times.hour + 11 : times.hour;
+
+    let pm = hours24 > 11 ? true : times.pm; //force PM if it is currently the afternoon
+    let hour = hours24 < this.state.nowHour ? this.state.nowHour : hours24; //still 24-hour clock, but constrained to only future hours
+    let minute = hour === this.state.nowHour && times.minute < this.state.nowMinute
+                 ? this.state.nowMinute
+                 : times.minute;
+
+    //Convert back to 12 hour clock
+    let hours12 = hour > 11 ? hour - 11 : hour + 1;
+
     return {
-      hour: times.pm === this.state.nowPm
-            && this.state.nowHour > times.hour
-            ? this.state.nowHour 
-            : times.hour,
-
-      minute: times.pm === this.state.nowPm 
-            &&  this.state.nowHour == times.hour
-            &&  this.state.nowMinute > times.minute
-            ? this.state.nowMinute
-            : times.minute,
-
-      pm: this.state.nowPm && this.state.pm 
-          ? true
-          : times.pm
+      pm: pm,
+      hour: hours12,
+      minute: minute
     }
+
   }
 
   handleHourChange(e){
     let time = this.getConstrainedTime({
-      hour: e.target.value,
+      hour: parseInt(e.target.value),
       minute: this.state.minute,
       pm: this.state.pm
     })
@@ -121,7 +120,7 @@ class TimeSelect extends React.Component {
   handleMinuteChange(e){
     let time = this.getConstrainedTime({
       hour: this.state.hour,
-      minute: e.target.value,
+      minute: parseInt(e.target.value),
       pm: this.state.pm
     })
 
@@ -164,9 +163,9 @@ class TimeSelect extends React.Component {
         <p className="time-label"> {" Hours "} </p>
         <div className="hour-container">
           <input  type="range" 
-                  min="1" 
-                  max="12" 
-                  step="1" 
+                  min={1}
+                  max={12} 
+                  step={1} 
                   value={ this.state.hour }
                   onChange={this.handleHourChange} />
         </div>
@@ -174,9 +173,9 @@ class TimeSelect extends React.Component {
         <p className="time-label"> {" Minutes "} </p>
         <div className="minutes-container">
           <input  type="range" 
-                  min="0" 
-                  max="59" 
-                  step="1" 
+                  min={0}
+                  max={59} 
+                  step={1} 
                   value={ this.state.minute }
                   onChange={this.handleMinuteChange} />
         </div>
