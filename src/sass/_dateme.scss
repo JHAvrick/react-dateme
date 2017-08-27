@@ -1,0 +1,76 @@
+@import "mixins";
+@import "variables";
+
+.dateme-container {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	width: 315px;
+	height: 450px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	padding: 11px;
+	background-color: white;
+	border: 1px solid $dateme-fg-color;
+	border-radius: 5px;
+	user-select: none;
+
+	.dateme-tab-container {
+    color: $dateme-fg-color;
+
+		display: flex;
+		flex-direction: row;
+		flex-grow: .2;
+		width: 305px;
+		min-height: 25px;
+
+		border: 1px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-grow: 0.5;
+      border-radius: 1px;
+		}
+
+		.dateme-tab-active {
+			 background-color: $dateme-fg-color;  
+       min-height: inherit;
+       color: white;
+		}
+
+		.dateme-tab-inactive {
+       color: #DFE0E4;
+       min-height: inherit;
+       background-color: none;
+       border: none;
+		}
+
+	}
+
+	input[type=button] {
+		background-color: $dateme-fg-color;
+
+		font-size: 12pt;
+		flex-grow: .5;
+		margin-top: 10px;
+		width: 309px;
+		height: 32px;
+		border-radius: 3px;
+		color: white;
+		outline: none;
+		border: none;
+	}
+
+	input[type=button]:active {
+		filter: brightness(125%);
+	}
+
+}

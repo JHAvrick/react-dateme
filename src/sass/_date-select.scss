@@ -1,0 +1,121 @@
+@import "mixins";
+@import "variables";
+
+.date-select-container {
+	@include unselectable;
+
+	width: 275px;
+	height: 325px;
+	background-color: white;
+	border: 1px solid #dfe0e4;
+	border-radius: 5px;
+	padding: 15px;
+
+	.month-container {
+
+		width: 100%;
+		height: 35px;
+		
+		display: flex;
+		flex-direction: row;
+		flex-grow: 1;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+
+		.month-current {
+			color: $dateme-fg-color;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 80%;
+	    font-weight: 700;
+	    font-size: 14px;
+	    text-transform: uppercase;
+		}
+
+		.month-previous {
+			border-right:12px solid $dateme-fg-color; 
+
+		  width: 0; 
+		  height: 0; 
+		  border-top: 12px solid transparent;
+		  border-bottom: 12px solid transparent; 
+		  
+		  border-radius: 5px;
+		  cursor: pointer;
+		}
+
+		.month-next {
+			border-left: 12px solid $dateme-fg-color;
+
+		  width: 0; 
+		  height: 0; 
+		  border-top: 12px solid transparent;
+		  border-bottom: 12px solid transparent;
+		  border-radius: 5px;
+		  cursor: pointer;
+		}
+
+	}
+
+	.day-container {
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		width: 90%;
+		height: 90%;
+
+		.day-table {
+
+			width: 275px;
+			height: 275px;	
+			table-layout: fixed;
+			border-collapse: collapse;
+			text-align: center;
+
+			.day-blank {
+				cursor: default;
+			}
+
+			.day-unselectable {
+				color: $dateme-inactive-color;
+				cursor: default;
+			}
+
+			.day-unselected {
+				border: 1px solid #dfe0e4;
+			}
+
+			.day-selected {
+				background-color: $dateme-fg-color;
+				color: white;
+			}
+
+			td {
+				width: 25px;
+				height: 25px;
+			}
+
+			thead td {
+				color: inheret;
+		    font-size: 11px;
+		    font-weight: 700;
+		    text-transform: uppercase;
+		    border: 1px solid #dfe0e4;
+		    font-size: 12px;
+			}
+
+			tbody  td {
+				color: $dateme-fg-color;
+				border: 1px solid #dfe0e4;
+				cursor: pointer;
+			}
+
+		}
+	}
+}

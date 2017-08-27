@@ -1,0 +1,28 @@
+{
+  "name": "react-dateme",
+  "version": "1.0.0",
+  "description": "Sandbox for creating react components",
+  "main": "app.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "_style": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
+    "style": "node-sass --watch ./src/sass/all.scss ./test/react-dateme.css",
+    "build": "webpack -p",
+    "server": "node server.js"
+  },
+  "author": "Joshua Avrick",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.15.4",
+    "ip": "^1.1.5",
+    "node-sass": "^4.5.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.4.1"
+  },
+  "dependencies": {}
+}

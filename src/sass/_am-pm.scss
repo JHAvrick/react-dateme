@@ -1,0 +1,36 @@
+@import "mixins";
+@import "variables";
+
+.am-pm-container {
+
+    display: flex;
+    flex-direction: column;
+
+    width: 32px;
+    height: 66px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 3px;
+    border-color: $dateme-fg-color;
+    color: #1385e5;
+    margin-left: 10px;
+    padding-bottom: 1px;
+    cursor:  pointer;
+
+    span {
+        flex-grow: .5;
+        width: 102%;
+        border-radius: 1px;
+    }
+
+    .am-pm-inactive {
+        color: #DFE0E4;
+        background-color: none;
+    }
+
+    .am-pm-active {
+        color: white;
+        background-color: $dateme-fg-color;    
+    }
+
+}
