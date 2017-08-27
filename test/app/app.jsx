@@ -11,7 +11,7 @@ class App extends React.Component {
     return (<div style={ {display: 'flex', flexDirection:'row', alignItems: 'center', justifyContent:'center', height: '100%' } }>
               
     					<div style={ { margin: '25px'} }>
-              	<DateMe futureOnly={true} />
+              	<DateMe color="#3E3F3A" futureOnly={true} />
               </div>
 
               <div style={ { margin: '25px'} }>
@@ -19,7 +19,7 @@ class App extends React.Component {
               </div>
               
               <div style={ { margin: '25px'} }>
-              	<DateMe color="#00308F" />
+              	<DateMe color="#FF6961" />
               </div>
 
             </div>)

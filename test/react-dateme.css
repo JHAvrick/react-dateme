@@ -268,7 +268,8 @@
     display: flex;
     flex-direction: row;
     flex-grow: .2;
-    width: 305px;
+    width: 305.5px;
+    /* using a fractional pixel here seems to solve off-by-one issues */
     min-height: 25px;
     border: 1px solid;
     border-radius: 3px;
@@ -278,12 +279,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-grow: 0.5;
+      flex-grow: .5;
       border-radius: 1px; }
     .dateme-container .dateme-tab-container .dateme-tab-active {
       background-color: #282826;
       min-height: inherit;
-      color: white; }
+      color: white;
+      border-radius: 1px; }
     .dateme-container .dateme-tab-container .dateme-tab-inactive {
       color: #DFE0E4;
       min-height: inherit;
