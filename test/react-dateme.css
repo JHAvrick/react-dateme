@@ -54,8 +54,8 @@
     width: 90%;
     height: 90%; }
     .date-select-container .day-container .day-table {
-      width: 275px;
-      height: 275px;
+      width: 275.5px;
+      height: 275.5px;
       table-layout: fixed;
       border-collapse: collapse;
       text-align: center; }
@@ -134,7 +134,7 @@
     border: 0px solid #010101; }
   .time-select-container input[type=range]::-moz-range-thumb {
     /* border: 2px solid $dateme-fg-color; */
-    box-shadow: 1px 1px 8px #000000;
+    box-shadow: 1px 1px 3px #000000;
     height: 24px;
     width: 24px;
     border-radius: 50px;

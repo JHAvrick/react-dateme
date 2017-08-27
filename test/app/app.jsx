@@ -19,7 +19,7 @@ class App extends React.Component {
               </div>
               
               <div style={ { margin: '25px'} }>
-              	<DateMe color="#FF6961" />
+              	<DateMe month={0} day={1} year={2038} color="#FF6961" />
               </div>
 
             </div>)
