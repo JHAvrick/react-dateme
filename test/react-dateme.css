@@ -262,7 +262,10 @@
   background-color: white;
   border: 1px solid #282826;
   border-radius: 5px;
-  user-select: none; }
+  user-select: none;
+  /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+  box-sizing: initial;
+  -webkit-box-sizing: initial; }
   .dateme-container .dateme-tab-container {
     color: #282826;
     display: flex;
@@ -293,10 +296,14 @@
       border: none; }
   .dateme-container input[type=button] {
     background-color: #282826;
+    /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+    /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     font-size: 12pt;
     flex-grow: .5;
     margin-top: 10px;
-    width: 309px;
+    width: 309px !important;
     height: 32px;
     border-radius: 3px;
     color: white;
