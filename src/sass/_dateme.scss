@@ -18,6 +18,10 @@
 	border-radius: 5px;
 	user-select: none;
 
+	/* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+	box-sizing: initial; 
+	-webkit-box-sizing: initial;
+
 	.dateme-tab-container {
     color: $dateme-fg-color;
 
@@ -56,13 +60,22 @@
 
 	}
 
+	div {
+
+	}
+
 	input[type=button] {
 		background-color: $dateme-fg-color;
+
+		/* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+	/* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+		box-sizing: border-box; 
+		-webkit-box-sizing: border-box;
 
 		font-size: 12pt;
 		flex-grow: .5;
 		margin-top: 10px;
-		width: 309px;
+		width: 309px !important;
 		height: 32px;
 		border-radius: 3px;
 		color: white;

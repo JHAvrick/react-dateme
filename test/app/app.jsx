@@ -8,18 +8,20 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div style={ {display: 'flex', flexDirection:'row', alignItems: 'center', justifyContent:'center', height: '100%' } }>
+    return (<div>
               
-    					<div style={ { margin: '25px'} }>
-              	<DateMe color="#3E3F3A" futureOnly={true} />
-              </div>
+              <div id="components-container">
+      					<div className="item-containers" style={ { margin: '25px'} }>
+                	<DateMe color="#3E3F3A" futureOnly={true} />
+                </div>
 
-              <div style={ { margin: '25px'} }>
-              	<DateMe color="#824ED2" />
-              </div>
-              
-              <div style={ { margin: '25px'} }>
-              	<DateMe month={0} day={1} year={2038} color="#FF6961" />
+                <div className="item-containers" style={ { margin: '25px'} }>
+                	<DateMe color="#824ED2" />
+                </div>
+                
+                <div className="item-containers" style={ { margin: '25px'} }>
+                	<DateMe month={0} day={1} year={2038} color="#FF6961" />
+                </div>
               </div>
 
             </div>)

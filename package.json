@@ -8,7 +8,7 @@
     "_style": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
     "style": "node-sass --watch ./src/sass/all.scss ./test/react-dateme.css",
     "build": "webpack -p",
-    "server": "node server.js"
+    "server": "node ./test/server.js"
   },
   "author": "Joshua Avrick",
   "license": "MIT",
