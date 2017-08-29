@@ -1,0 +1,34 @@
+#components-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.code-snippet {
+	margin-top: 15px;
+}
+
+@media only screen and (max-device-width: 600px) {
+	#components-container {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.item-containers {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		margin-left: 0;
+		margin-right: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.code-snippet {
+		margin-top: 15px;
+		width: 340px;
+	}
+
+}

@@ -1,0 +1,71 @@
+$sidenav-bg-color: #111 !default;
+$sidenav-header-color: #222222 !default;
+$sidenav-header-height: 55px !default;
+$sidenav-header-font: 20px arial, sans-serif !default;
+$sidenav-header-font-color: #A4A2A3 !default;
+
+.react-sidenav {
+    background-color: $sidenav-bg-color; /* Black*/
+
+	height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+
+    .react-sidenav-header {
+        /* Sass Variable Settings */
+        background-color: $sidenav-header-color;
+        height: $sidenav-header-height;
+
+        /* Flex Settings */
+        display: flex;
+        flex-direction: row;
+        
+        /* Positioning */
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .react-sidenav-header-icon {
+
+        flex-grow: 0.5;
+        flex-shrink: 0;
+
+        margin: 7px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+    }
+
+    .react-sidenav-header-title {
+        color: $sidenav-header-font-color;
+        font: $sidenav-header-font;
+        
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-grow: 0.5;
+        flex-shrink: 0;
+
+        overflow: none;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 5px;
+
+        p {
+            white-space: nowrap;
+            margin-top: 15px;
+        }
+
+    }
+
+}

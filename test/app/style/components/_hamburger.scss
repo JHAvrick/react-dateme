@@ -1,0 +1,28 @@
+.hamburger-container {
+
+	display: inline-block;
+	vertical-align: middle;
+
+	.hamburger-bar-top, .hamburger-bar-middle, .hamburger-bar-bottom {
+    width: 35px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 6px 0;
+    transition: 0.4s;
+	}
+
+	&:hover {
+
+		.hamburger-bar-top {
+	    transform: translate(0px, -3px) ;
+	    transition: 0.2s;
+		}
+
+		.hamburger-bar-bottom {
+	    transform: translate(0px, 3px) ;
+	    transition: 0.2s;
+		}
+
+	}
+
+}

@@ -27,7 +27,7 @@ class TimeSelect extends React.Component {
         if (this.state.futureOnly){
           let now = new Date();
           this.setState({
-            nowHour: now.getHours(),
+            nowHour: now.getHours() + 1,
             nowMinute: now.getMinutes(),
             nowPm: now.getHours() > 11 ? true : false
           });
@@ -80,17 +80,17 @@ class TimeSelect extends React.Component {
   getConstrainedTime(times){
     if (!this.state.futureOnly) return times;
 
-    //Convert given time to 24 hour clock because its easier to work with
-    let hours24 = this.state.nowPm ? times.hour + 11 : times.hour;
+    //Convert given time to 1-based (unlike JS Date class) 24 hour clock  because its easier to work with
+    let hours24 = this.state.nowPm ? times.hour + 12 : times.hour;
 
-    let pm = hours24 > 11 ? true : times.pm; //force PM if it is currently the afternoon
+    let pm = hours24 > 12 ? true : times.pm; //force PM if it is currently the afternoon
     let hour = hours24 < this.state.nowHour ? this.state.nowHour : hours24; //still 24-hour clock, but constrained to only future hours
     let minute = hour === this.state.nowHour && times.minute < this.state.nowMinute
                  ? this.state.nowMinute
                  : times.minute;
 
     //Convert back to 12 hour clock
-    let hours12 = hour > 11 ? hour - 11 : hour + 1;
+    let hours12 = hour > 12 ? hour - 12 : hour;
 
     return {
       pm: pm,
@@ -339,7 +339,7 @@ TimeSelect.defaultProps = {
       hour: 1,
       minute: 0,
       pm: false,
-      nowHour: now.getHours(),
+      nowHour: now.getHours() + 1,
       nowMinute: now.getMinutes(),
       nowPm: now.getHours() > 11 ? true : false,
       onChange: function(){}
