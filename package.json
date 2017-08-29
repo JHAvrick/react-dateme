@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "webpack -d --watch",
-    "_style": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
-    "style": "node-sass --watch ./src/sass/all.scss ./test/react-dateme.css",
+    "style-dist": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
+    "style-main": "node-sass --watch ./src/sass/all.scss ./test/components/react-dateme.css",
+    "style-test": "node-sass --watch ./test/app/style/main.scss ./test/index.css",
     "build": "webpack -p",
     "server": "node ./test/server.js"
   },
@@ -24,5 +25,7 @@
     "react-dom": "^15.6.1",
     "webpack": "^3.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-onclickout": "^2.0.7"
+  }
 }
