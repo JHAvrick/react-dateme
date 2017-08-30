@@ -86,33 +86,15 @@ class TimeSelect extends React.Component {
   getConstrainedTime(times){
     if (!this.state.futureOnly) return times;
 
-    let pm = this.state.nowPm >= 12 ? true : times.pm; //force PM if it is past noon
+    let pm = this.state.nowPm ? true : times.pm; //force PM if it is past noon
 
-    // Sign -- Actaul
-    // AM      AM
-    // PM      AM
-    // PM      PM
-
-    if (!pm && !this.state.nowPm){
-      if (times.hour < this.state.nowHour){
-        console.log(1);
-        var hour = this.state.nowHour;
-      } else {
-        console.log(2);
-        var hour = times.hour;
-      }
-    } else if (pm && this.state.nowPm){
-      if (times.hour < this.state.nowHour) {
-        console.log(3);
-        var hour = this.state.nowHour;
-      } else {
-        console.log(4);
-        var hour = times.hour;
-      }
-    } else {
-      console.log(5);
-      var hour = times.hour;
-    }
+    let hour = times.hour;
+    if (!pm && !this.state.nowPm)
+      if (times.hour < this.state.nowHour) 
+        hour = this.state.nowHour;
+    else if (pm && this.state.nowPm)
+      if (times.hour < this.state.nowHour) 
+        hour = this.state.nowHour;
 
     let minute = hour === this.state.nowHour 
                  && pm === this.state.nowPm
@@ -120,7 +102,6 @@ class TimeSelect extends React.Component {
                  ? this.state.nowMinute
                  : times.minute;
 
-    console.log(hour);
     return {
       pm: pm,
       hour: hour,
@@ -368,7 +349,12 @@ TimeSelect.defaultProps = {
       hour: 1,
       minute: 0,
       pm: false,
-      nowHour: now.getHours(),
+      nowHour: (() => {
+        let hour24 = now.getHours();
+        if (hour24 === 0) return 12;
+        else if (hour24 > 12) return hour24 - 12;
+        else return hour24;
+      })(),
       nowMinute: now.getMinutes(),
       nowPm: now.getHours() > 11 ? true : false,
       onChange: function(){}
