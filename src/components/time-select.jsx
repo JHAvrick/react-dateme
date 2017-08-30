@@ -88,13 +88,16 @@ class TimeSelect extends React.Component {
 
     let pm = this.state.nowPm ? true : times.pm; //force PM if it is past noon
 
-    let hour = times.hour;
-    if (!pm && !this.state.nowPm)
-      if (times.hour < this.state.nowHour) 
+    var hour = times.hour; //given value is passed through if none of the conditionans below are true
+    if (!pm && !this.state.nowPm){ //if the toggle is set to am AND the it is currently morning
+      if (times.hour < this.state.nowHour){ //prevent hour from moving lower than current hour
         hour = this.state.nowHour;
-    else if (pm && this.state.nowPm)
-      if (times.hour < this.state.nowHour) 
-        hour = this.state.nowHour;
+      }
+    } else if (pm && this.state.nowPm){ //if it is currently afternoon (toggle is already forced to pm)
+      if (times.hour < this.state.nowHour){ //prevent hour from moving lower than current hour
+        hour = this.state.nowHour; 
+      } 
+    }
 
     let minute = hour === this.state.nowHour 
                  && pm === this.state.nowPm
