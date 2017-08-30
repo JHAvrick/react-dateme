@@ -296,7 +296,6 @@ class CalenderDay extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     var isPast = new Date() > new Date(nextProps.activeYear, nextProps.activeMonth, nextProps.day + 1);
     this.setState({
       day: nextProps.day,
