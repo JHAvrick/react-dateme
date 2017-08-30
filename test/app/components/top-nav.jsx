@@ -12,7 +12,6 @@ class TopNav extends React.Component {
     this.style = {
       backgroundColor: props.backgroundColor
     }
-
   }
 
   render() {

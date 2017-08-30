@@ -172,12 +172,13 @@ DateMe.defaultProps = {
   day: now.getDate(),
   year: now.getFullYear(),
   hour: (() => {
-    var currentHour = now.getHours();
-    if (currentHour > 11) return currentHour - 11;
-    else return currentHour + 1;
+    let hours24 = now.getHours();
+    if (hours24 === 0) return 12
+    else if (hours24 > 12) return hours24 - 12;
+    else return hours24;
   })(),
   minute: now.getMinutes(),
-  pm: now.getHours() > 11 ? true : false,
+  pm: now.getHours() >= 12 ? true : false,
   futureOnly: false,
   dateIsToday: true,
   onSubmit: function(){},
