@@ -18,6 +18,7 @@ class App extends React.Component {
 
     this.openSideNav = this.openSideNav.bind(this);
     this.closeSideNav = this.closeSideNav.bind(this);
+    this.onChange = this.onChange.bind(this);
 
   }
 
@@ -31,6 +32,10 @@ class App extends React.Component {
     if (this.state.sideNavOpen){
       this.setState({ sideNavOpen: false });
     } 
+  }
+
+  onChange(change){
+    console.log(change);
   }
 
   render() {
@@ -48,7 +53,7 @@ class App extends React.Component {
                 	
                   {"Basic Date/Time"}
 
-                  <DateMe color="#007191" />
+                  <DateMe color="#007191" onChange={this.onChange} />
                   
                   <Highlight className="code-snippet">
                     { '<DateMe  color="#007191" /> \n\n\n\n' }
