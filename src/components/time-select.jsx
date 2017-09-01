@@ -57,7 +57,7 @@ class TimeSelect extends React.Component {
 
   triggerOnChange(){
     var change = {
-      hour: this.state.hour,
+      hour: this.state.hour === 0 ? 12 : this.state.hour,
       minute: this.state.minute,
       pm: this.state.pm
     }
@@ -176,8 +176,8 @@ class TimeSelect extends React.Component {
         <p className="time-label"> {" Hours "} </p>
         <div className="hour-container">
           <input  type="range" 
-                  min={1}
-                  max={12} 
+                  min={0}
+                  max={11} 
                   step={1} 
                   value={ this.state.hour }
                   onChange={this.handleHourChange} />
@@ -214,7 +214,7 @@ class TimeDisplay extends React.Component {
 
     this.state = {
       color: props.color,
-      hour: this.zeroPad(props.hour),
+      hour: this.zeroPad(props.hour === 0 ? 12 : props.hour),
       minute:  this.zeroPad(props.minute),
       pm: props.pm,
       onChange: props.onChange
@@ -240,7 +240,7 @@ class TimeDisplay extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      hour: this.zeroPad(nextProps.hour),
+      hour: this.zeroPad(nextProps.hour === 0 ? 12 : nextProps.hour),
       minute:  this.zeroPad(nextProps.minute),
       pm: nextProps.pm
     });
@@ -252,7 +252,7 @@ class TimeDisplay extends React.Component {
         
         <span className="hour-display"
               style={ this.style.foreground }> 
-              {this.state.hour} 
+              { this.state.hour } 
         </span>
 
         <span className="time-seperator" 
