@@ -36,12 +36,12 @@
               console.log(bar.style.width);
         } 
 
-        req.open('GET', 'bundle.js', true);  
+        req.open('GET', 'https://cdn.rawgit.com/JHAvrick/react-dateme/gh-pages/test/bundle.js', true);  
 
         req.onreadystatechange = function (aEvt) {   
             if (req.readyState == 4) {  
                 var hugeScript = document.createElement('script');
-                    hugeScript.setAttribute('src','bundle.js');
+                    hugeScript.setAttribute('src','https://cdn.rawgit.com/JHAvrick/react-dateme/gh-pages/test/bundle.js');
 
                 document.head.appendChild(hugeScript);
             } 
