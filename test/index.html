@@ -5,10 +5,53 @@
     <title>React-DateMe</title>
 
     <link rel="stylesheet" type="text/css" href="index.css">
-    
+
   </head>
-  <body>
-    <div id="app" />
-    <script src="bundle.js" type="text/javascript"></script>
+  <body>  
+
+    <div id="app">
+      <div class="react-topnav">
+          <div class="topnav-container-title">
+            <p>React-DateMe</p>
+          </div>
+          <div className="topnav-container-items">
+          </div>
+      </div>     
+      <div id="loading-bar"></div>
+      <div class="loader-pos">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+
+    <!-- <script src="bundle.js"></script> -->
+    <script>
+
+        var req = new XMLHttpRequest();
+
+        req.onprogress = function(progress){
+          var bar = document.getElementById("loading-bar");
+
+          console.log()
+
+              bar.style.width = ((progress.loaded / progress.total) * 100) + '%';
+
+              console.log(bar.style.width);
+        } 
+
+        req.open('GET', 'bundle.js', true);  
+
+        req.onreadystatechange = function (aEvt) {   
+            if (req.readyState == 4) {  
+                var hugeScript = document.createElement('script');
+                    hugeScript.setAttribute('src','bundle.js');
+
+                document.head.appendChild(hugeScript);
+            } 
+        }
+
+        req.send(); 
+    
+    </script>
+
   </body>
 </html>

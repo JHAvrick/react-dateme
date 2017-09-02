@@ -54,8 +54,8 @@
     width: 90%;
     height: 90%; }
     .date-select-container .day-container .day-table {
-      width: 275px;
-      height: 275px;
+      width: 275.5px;
+      height: 275.5px;
       table-layout: fixed;
       border-collapse: collapse;
       text-align: center; }
@@ -134,7 +134,7 @@
     border: 0px solid #010101; }
   .time-select-container input[type=range]::-moz-range-thumb {
     /* border: 2px solid $dateme-fg-color; */
-    box-shadow: 1px 1px 8px #000000;
+    box-shadow: 1px 1px 3px #000000;
     height: 24px;
     width: 24px;
     border-radius: 50px;
@@ -262,13 +262,17 @@
   background-color: white;
   border: 1px solid #282826;
   border-radius: 5px;
-  user-select: none; }
+  user-select: none;
+  /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+  box-sizing: initial;
+  -webkit-box-sizing: initial; }
   .dateme-container .dateme-tab-container {
     color: #282826;
     display: flex;
     flex-direction: row;
     flex-grow: .2;
-    width: 305px;
+    width: 305.5px;
+    /* using a fractional pixel here seems to solve off-by-one issues */
     min-height: 25px;
     border: 1px solid;
     border-radius: 3px;
@@ -278,23 +282,35 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-grow: 0.5;
+      flex-grow: .5;
       border-radius: 1px; }
     .dateme-container .dateme-tab-container .dateme-tab-active {
       background-color: #282826;
       min-height: inherit;
-      color: white; }
+      color: white;
+      border-radius: 1px; }
     .dateme-container .dateme-tab-container .dateme-tab-inactive {
       color: #DFE0E4;
       min-height: inherit;
       background-color: none;
       border: none; }
+  .dateme-container input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
   .dateme-container input[type=button] {
     background-color: #282826;
+    /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+    /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-size: 12pt;
     flex-grow: .5;
     margin-top: 10px;
-    width: 309px;
+    width: 309px !important;
     height: 32px;
     border-radius: 3px;
     color: white;

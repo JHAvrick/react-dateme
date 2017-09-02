@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "style-dist": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
-    "style-main": "node-sass --watch ./src/sass/all.scss ./test/components/react-dateme.css",
+    "style-main": "node-sass --watch ./src/sass/all.scss ./test/app/style/components/react-dateme.scss",
     "style-test": "node-sass --watch ./test/app/style/main.scss ./test/index.css",
     "build": "webpack -p",
     "server": "node ./test/server.js"
