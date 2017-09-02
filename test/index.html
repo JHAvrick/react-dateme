@@ -31,14 +31,12 @@
         req.onprogress = function(progress){
           var bar = document.getElementById("loading-bar");
 
-          console.log()
-
               bar.style.width = ((progress.loaded / progress.total) * 100) + '%';
 
               console.log(bar.style.width);
         } 
 
-        req.open('GET', 'bundle.js', true);  
+        req.open('GET', 'https://github.com/JHAvrick/react-dateme/blob/gh-pages/test/bundle.js', true);  
 
         req.onreadystatechange = function (aEvt) {   
             if (req.readyState == 4) {  
