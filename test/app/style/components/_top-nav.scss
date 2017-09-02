@@ -1,7 +1,7 @@
 /* Default Styles */
 
 $nav-height: 55px !default;
-$nav-bg-color: #333 !default;
+$nav-bg-color: #282C34 !default;
 $nav-gutter-left: 15px !default;
 $nav-gutter-right: 15px !default;
 
@@ -11,6 +11,7 @@ $nav-gutter-right: 15px !default;
 	flex-direction: row;
 	flex-grow: 1;
 	align-items: center;
+	justify-content: flex-end;
 	overflow: hidden;
 
 	height: $nav-height;

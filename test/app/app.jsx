@@ -12,8 +12,9 @@ class App extends React.Component {
   constructor(props){
   	super(props);
 
-    this.state ={
-      sideNavOpen: false
+    this.state = {
+      sideNavOpen: false,
+      reveal: false
     }
 
     this.openSideNav = this.openSideNav.bind(this);
@@ -34,12 +35,20 @@ class App extends React.Component {
     } 
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        reveal: true
+      });
+    }, 1);
+  }
+
   onChange(change){
-    console.log(change);
+    
   }
 
   render() {
-    return (<div>
+    return (<div className="app">
               <TopNav backgroundColor="#282C34" title="React-DateMe">
                 <OnClickOut onClickOut={this.closeSideNav}>
                   <Hamburger onClick={this.openSideNav} />
@@ -47,13 +56,13 @@ class App extends React.Component {
                 </OnClickOut>
               </TopNav>
 
-              <div id="components-container">
+              <div id="components-container" style={ { opacity: this.state.reveal ? 1 : 0 } }>
 
       					<div className="item-containers" style={ { margin: '25px'} }>
                 	
-                  {"Basic Date/Time"}
+                  <p className="component-title"> {"Basic Date/Time"} </p>
 
-                  <DateMe color="#007191" onChange={this.onChange} />
+                  <DateMe color="#6556BD" onChange={this.onChange} />
                   
                   <Highlight className="code-snippet">
                     { '<DateMe  color="#007191" /> \n\n\n\n' }
@@ -63,9 +72,9 @@ class App extends React.Component {
 
                 <div className="item-containers" style={ { margin: '25px'} }>
                 	
-                  {"Future Only"}
+                  <p className="component-title"> {"Future Only"} </p>
 
-                  <DateMe color="#824ED2" futureOnly={true} />
+                  <DateMe color="#4830AC" futureOnly={true} />
                   
                   <Highlight className="code-snippet">
                     { '<DateMe  color="#824ED2" \n\t futureOnly={true} /> \n\n\n' }
@@ -75,9 +84,9 @@ class App extends React.Component {
                 
                 <div className="item-containers" style={ { margin: '25px'} }>
                 	
-                  {"Set Initial Values"}
+                  <p className="component-title"> {"Set Initial Values"} </p>
 
-                  <DateMe month={0} day={1} year={2038} color="#FF6961" />
+                  <DateMe month={0} day={1} year={2038} color="#2B0D57" />
                   
                   <Highlight className="code-snippet">
                     { '<DateMe  month={0} \n\t day={1} \n\t year={2038} \n\t color="#FF6961" />' }

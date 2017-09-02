@@ -294,12 +294,19 @@
       min-height: inherit;
       background-color: none;
       border: none; }
+  .dateme-container input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
   .dateme-container input[type=button] {
     background-color: #282826;
     /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
     /* CSS libraries like bootstrap may set a global rule for box-sizing: inheret, which will mess shit up without this rule */
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-size: 12pt;
     flex-grow: .5;
     margin-top: 10px;
