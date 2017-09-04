@@ -23,33 +23,7 @@
       </div>
     </div>
 
-    <!-- <script src="bundle.js"></script> -->
-    <script>
-
-        var req = new XMLHttpRequest();
-
-        req.onprogress = function(progress){
-          var bar = document.getElementById("loading-bar");
-
-              bar.style.width = ((progress.loaded / progress.total) * 100) + '%';
-
-              console.log(bar.style.width);
-        } 
-
-        req.open('GET', 'https://cdn.rawgit.com/JHAvrick/react-dateme/gh-pages/test/bundle.js', true);  
-
-        req.onreadystatechange = function (aEvt) {   
-            if (req.readyState == 4) {  
-                var hugeScript = document.createElement('script');
-                    hugeScript.setAttribute('src','https://cdn.rawgit.com/JHAvrick/react-dateme/gh-pages/test/bundle.js');
-
-                document.head.appendChild(hugeScript);
-            } 
-        }
-
-        req.send(); 
+    <script src="bundle.js"></script>
     
-    </script>
-
   </body>
 </html>

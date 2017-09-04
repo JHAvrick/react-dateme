@@ -4,12 +4,12 @@
   "description": "Sandbox for creating react components",
   "main": "app.js",
   "scripts": {
+    "build": "webpack -p",
     "dev": "webpack -d --watch",
+    "server": "node ./test/server.js",
     "style-dist": "node-sass --watch ./src/sass/all.scss ./build/react-dateme.css",
     "style-main": "node-sass --watch ./src/sass/all.scss ./test/app/style/components/react-dateme.scss",
-    "style-test": "node-sass --watch ./test/app/style/main.scss ./test/index.css",
-    "build": "webpack -p",
-    "server": "node ./test/server.js"
+    "style-test": "node-sass --watch ./test/app/style/main.scss ./test/index.css"
   },
   "author": "Joshua Avrick",
   "license": "MIT",
@@ -23,7 +23,9 @@
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "webpack": "^3.4.1"
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.4.1",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "dependencies": {
     "react-onclickout": "^2.0.7"
