@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var path = require('path');
 
 var APP_DIR = path.resolve(__dirname, 'src/components');
@@ -39,6 +41,8 @@ module.exports = [
 					libraryTarget: 'umd' //MUST be specified to import a bundled component 
 			},
 
+			plugins: [new UglifyJSPlugin()],
+
 			module : {
 				loaders : [{
 					test : /\.jsx?/,
@@ -65,6 +69,9 @@ module.exports = [
 					path: TEST_BUILD_DIR,
 					filename: 'bundle.js'
 			},
+
+			//plugins: [new BundleAnalyzerPlugin()],
+			plugins: [new UglifyJSPlugin()],
 
 			module : {
 				loaders : [{

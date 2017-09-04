@@ -1,8 +1,9 @@
 body {
 	margin: 0px;
-	line-height: normal;
-	font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	overflow-x: hidden;
+  line-height: normal;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 #components-container {
@@ -10,6 +11,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+  margin-top: 55px;
 	opacity: 0;
 	transition: 1s;
 }
@@ -28,6 +30,7 @@ body {
 @media only screen and (max-device-width: 600px) {
 	#components-container {
 		display: inline-block;
+    margin-top: 0px;
 		width: 100%;
 	}
 

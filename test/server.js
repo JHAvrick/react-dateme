@@ -9,3 +9,6 @@ app.use(express.static(path.join(__dirname, '/FOLDERTOHTMLFILESTOSERVER')));
 app.listen(8080, "0.0.0.0");
 
 console.log('Listening on port 8080');
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+  console.log('Local IP: ' + add);
+})
