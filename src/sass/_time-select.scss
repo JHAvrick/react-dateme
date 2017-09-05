@@ -4,7 +4,7 @@
 .time-select-container {
 	
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
@@ -13,9 +13,18 @@
 
 	padding: 15px;
 	background-color: $dateme-bg-color;
-	border: 1px solid #dfe0e4;
 	border-radius: 5px;
 	user-select: none;
+
+	.time-seperator {
+		width: 32px;
+		height: 65px;
+		font-size: 38px;
+    line-height: 65px;
+		display: inline-block;
+		text-align: center;
+		color: $dateme-fg-color;
+	}
 
 	input[type=range] {
 		width: 100%;

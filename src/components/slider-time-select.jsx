@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TimeDisplay from './time-display.jsx';
 
-class TimeSelect extends React.Component {
+class SliderTimeSelect extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      debug: 0,
       color: props.color,
       isVisible: props.isVisible,
       futureOnly: props.futureOnly,
@@ -59,7 +59,7 @@ class TimeSelect extends React.Component {
     var change = {
       hour: this.state.hour === 0 ? 12 : this.state.hour,
       minute: this.state.minute,
-      pm: this.state.pm
+      pm: this.state.pm 
     }
 
     this.state.onChange(change);
@@ -96,7 +96,7 @@ class TimeSelect extends React.Component {
     } else if (pm && this.state.nowPm){ //if it is currently afternoon (toggle is already forced to pm)
       if (times.hour < this.state.nowHour){ //prevent hour from moving lower than current hour
         hour = this.state.nowHour; 
-      } 
+      }
     }
 
     let minute = hour === this.state.nowHour 
@@ -167,6 +167,8 @@ class TimeSelect extends React.Component {
       <div  className="time-select-container" 
             style={{ display: this.state.isVisible ? 'block' : 'none', borderColor: this.style.border }}>
 
+        <div className="arrow-up"></div>
+
         <TimeDisplay  color={ this.state.color }
                       hour={ this.state.hour } 
                       minute={ this.state.minute } 
@@ -199,139 +201,8 @@ class TimeSelect extends React.Component {
 
 }
 
-class TimeDisplay extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.style = {
-      foreground: {
-        backgroundColor: props.color
-      },
-      background: {
-        color: props.color
-      }
-    }
-
-    this.state = {
-      color: props.color,
-      hour: this.zeroPad(props.hour === 0 ? 12 : props.hour),
-      minute:  this.zeroPad(props.minute),
-      pm: props.pm,
-      onChange: props.onChange
-    };
-
-    this.zeroPad = this.zeroPad.bind(this);
-    this.handleAmPmChange = this.handleAmPmChange.bind(this);
-  }
-
-  zeroPad(number){
-    if (number == null) return;
-
-    if (number < 10)
-      return '0' + number;
-    else 
-      return number;
-  }
-
-  handleAmPmChange(){
-    if (this.state.onChange)
-      this.state.onChange();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      hour: this.zeroPad(nextProps.hour === 0 ? 12 : nextProps.hour),
-      minute:  this.zeroPad(nextProps.minute),
-      pm: nextProps.pm
-    });
-  }
-
-  render() {
-    return (
-      <div className="time-display-container">
-        
-        <span className="hour-display"
-              style={ this.style.foreground }> 
-              { this.state.hour } 
-        </span>
-
-        <span className="time-seperator" 
-              style={ this.style.background }>  
-              :  
-        </span>
-        
-        <span className="minute-display" 
-              style={ this.style.foreground }> 
-              {this.state.minute}
-        </span>
-
-        <AmPmToggle color={ this.state.color }
-                    pm={ this.state.pm }
-                    onChange={ this.handleAmPmChange } />
-
-      </div>
-    );
-  }
-}
-
-//AmPmToggle is a controlled component
-//Clicking the toggle will not change its state, but will trigger a callback which
-//should decide whether to update the state or not
-class AmPmToggle extends React.Component {
-  
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      color: props.color,
-      pm: props.pm,
-      onChange: props.onChange
-    };
-
-    this.style = {
-      active: {
-        color: 'white',
-        backgroundColor: props.color
-      },
-      inactive: {
-        color: props.color,
-        backgroundColor: 'white'
-      }
-    }
-
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
-
-  onClickHandler(){
-    if (this.state.onChange)
-      this.state.onChange();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      pm: nextProps.pm
-    });
-  }
-
-  render() {
-    return (
-      <div className="am-pm-container" onClick={this.onClickHandler}>
-
-        <span style={ this.state.pm ? this.style.inactive : this.style.active }> 
-          { "AM" } 
-        </span>
-
-        <span style={ this.state.pm ? this.style.active : this.style.inactive } > 
-          { "PM" } 
-        </span>
-
-      </div>
-    );
-  }
-}
-
 //Defaults
-TimeSelect.propTypes = {
+SliderTimeSelect.propTypes = {
   color: PropTypes.string,
   isVisible: PropTypes.bool,
   futureOnly: PropTypes.bool,
@@ -345,7 +216,7 @@ TimeSelect.propTypes = {
 };
 
 let now = new Date();
-TimeSelect.defaultProps = {
+SliderTimeSelect.defaultProps = {
       color: '#282826',
       isVisible: true,
       futureOnly: false,
@@ -363,4 +234,4 @@ TimeSelect.defaultProps = {
       onChange: function(){}
 };
 
-export default TimeSelect;
+export default SliderTimeSelect;

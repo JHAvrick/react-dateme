@@ -28,7 +28,7 @@ class DateSelect extends React.Component {
       currentMonthIndex: props.month,
       currentYearIndex: props.year,
       currentMonthCount: new Date(props.year, props.month + 1, 0).getDate(),
-      firstDayOfMonth: new Date(props.year, props.month + 1, 0).getDay(),
+      firstDayOfMonth: new Date(props.year, props.month).getDay(),
       onChange:  props.onChange
     };
 
@@ -186,8 +186,7 @@ class DateSelect extends React.Component {
 
   render() {
     return (
-      <div  className="date-select-container" 
-            style={{ display: this.state.isVisible ? 'block' : 'none', borderColor: this.style.border }}>
+      <div className="date-select-container" style={{ display: this.state.isVisible ? 'block' : 'none' }}>
 
         <div className="month-container">
 

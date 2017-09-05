@@ -7,7 +7,7 @@
     flex-direction: column;
 
     width: 32px;
-    height: 66px;
+    height: 64px;
     line-height: 32px;
     text-align: center;
     border-radius: 3px;
@@ -20,7 +20,7 @@
     span {
         flex-grow: .5;
         width: 102%;
-        border-radius: 1px;
+        border-radius: 3px;
     }
 
     .am-pm-inactive {

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DateSelect from './date-select.jsx';
-import TimeSelect from './time-select.jsx';
+import DateSummary from './date-summary.jsx';
+import MeterTimeSelect from './meter-time-select.jsx';
 
 class DateMe extends React.Component {
   
@@ -102,6 +103,7 @@ class DateMe extends React.Component {
   render() {
     return (
       <div className="dateme-container" style={ this.style.base }>
+
         <div  className="dateme-tab-container" 
               style={ this.style.base }
               onClick={ this.handleTabSwitched }>
@@ -121,27 +123,52 @@ class DateMe extends React.Component {
           </span>
 
         </div>
+
+
+        <div className="dateme-main-panel"
+             style={ this.style.base } >
+
+          <DateSelect   color={ this.state.color } 
+                        futureOnly={ this.state.futureOnly }
+                        isVisible={this.state.dateTabActive ? true : false} 
+                        year={ this.state.year }
+                        month={ this.state.month }
+                        day={ this.state.day}
+                        onChange={this.handleDateChange} />
+
+          <MeterTimeSelect  color={ this.state.color } 
+                            futureOnly={true}
+                            isVisible={this.state.dateTabActive ? false : true }  
+                            onChange={this.handleTimeChange} />
+
+          <DateSummary isVisible={ this.state.dateTabActive ? false : true }
+                       year={this.state.year}
+                       month={this.state.month}
+                       day={this.state.day}
+                       hour={this.state.hour}
+                       minute={this.state.minute}
+                       pm={this.state.pm} />
+
+        </div>
         
-        <DateSelect   color={ this.state.color } 
-                      futureOnly={ this.state.futureOnly }
-                      isVisible={this.state.dateTabActive ? true : false} 
-                      year={ this.state.year }
-                      month={ this.state.month }
-                      day={ this.state.day }
-                      onChange={this.handleDateChange} />
+
         
-        <TimeSelect   color={ this.state.color } 
-                      futureOnly={ this.state.futureOnly && this.state.dateIsToday }
-                      isVisible={this.state.dateTabActive ? false : true}
-                      hour={ this.state.hour } 
-                      minute={ this.state.minute }
-                      pm={ this.state.pm }
-                      onChange={this.handleTimeChange} />
+        {/* 
+        <SliderTimeSelect   color={ this.state.color } 
+                            futureOnly={ this.state.futureOnly && this.state.dateIsToday }
+                            isVisible={this.state.dateTabActive ? false : true}
+                            hour={ this.state.hour } 
+                            minute={ this.state.minute }
+                            pm={ this.state.pm }
+                            onChange={this.handleTimeChange} />
+          */}
+
+
         
-              <input  type="button" 
-                      style={ this.style.button }
-                      value={ this.state.buttonLabel } 
-                      onClick={ this.handleSubmit } />
+          <input  type="button" 
+                  style={ this.style.button }
+                  value={ this.state.buttonLabel } 
+                  onClick={ this.handleSubmit } />
       </div>
     );
   }
