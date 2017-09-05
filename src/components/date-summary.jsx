@@ -23,8 +23,6 @@ class DateSummary extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    console.log(nextProps);
-
     var hour = nextProps.hour;
     if (!nextProps.pm && nextProps.hour === 12)
       hour = 0;
@@ -56,7 +54,7 @@ class DateSummary extends React.Component {
     return (
       <div className="date-summary-container" 
           style={{ display: this.state.isVisible ? 'flex' : 'none',
-                   borderColor: '#000000',
+                   borderColor: '#000000', 
                    height: '75px' }}>
 
         { this.state.dateString }
